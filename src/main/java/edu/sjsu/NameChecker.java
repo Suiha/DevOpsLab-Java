@@ -14,7 +14,7 @@ public class NameChecker {
      * @return True if input is a valid name, else false
      */
     public static boolean check(String input) {
-        String pattern = "^[a-zA-Z][a-zA-Z-'](1,39)$";
+        String pattern = "^[a-zA-Z][a-zA-Z-']{1,39}$";
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(input);
         
