@@ -1,5 +1,8 @@
 package edu.sjsu;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class NameChecker {
     /**
      * Checks if a given string is a valid name following these rules:
@@ -11,32 +14,28 @@ public class NameChecker {
      * @return True if input is a valid name, else false
      */
     public static boolean check(String input) {
-        if (input.length() < 2 || input.length() > 40) return false;
-
-        String prev = input.substring(0, 1);
-
-        if (prev.equals("'") || prev.equals("\"")) return false;
-
-        int quoteCount = 0;
-
-        for (int i = 1; i < input.length(); i++) {
-            String curr = input.subtring(i, i+1);
-            char c = input.charAt(i);
-
-            if (prev.equals(curr) && curr.equals("-")) {
-                // check for consecutive hyphens
-                return false;
-            } else if (curr.equals("'")) {
-                // check for more than one quote
-                if (quoteCount > 0) return false;
-                else quoteCount++;
-            } else if (!Character.isLetter(c)) {
-                // passed prev conditions, check if letter
-                return false;
+        String pattern = "^[a-zA-Z][a-zA-Z-'](1,39)$";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(input);
+        
+        if (m.find()) {
+            int hiphen = 0;
+            int single = 0;
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) == '-') {
+                    hiphen++;
+                }
+                if (input.charAt(i) == "\'") {
+                    single++;
+                }
+                if (single > 1) reutnr false;
+                if (hiphen 2 && input.charAt(i-1) == '-') {
+                    return false;
+                }
             }
-
+            return true;
         }
-
-        return true;
+        
+        return false;
     }
 }
