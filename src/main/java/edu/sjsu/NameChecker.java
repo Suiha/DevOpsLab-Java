@@ -24,7 +24,7 @@ public class NameChecker {
             if (prev == curr && curr == "-") {
                 // check for consecutive hyphens
                 return false;
-            } else if (curr == "'" || curr "\"") {
+            } else if (curr == "'") {
                 // check for more than one quote
                 if (quoteCount > 0) return false;
                 else quoteCount++;
