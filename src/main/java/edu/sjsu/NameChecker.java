@@ -12,19 +12,21 @@ public class NameChecker {
      */
     public static boolean check(String input) {
         if (input.length() < 2 || input.length() > 40) return false;
-        if (input.substring(0, 1) == "\'" || input.substring(0, 1) == "\"") return false;
+
+        string prev = input.substring(0, 1);
+
+        if (prev.equals("'") || prev.equals("\"")) return false;
 
         int quoteCount = 0;
 
-        string prev = input.substring(0, 1);
         for (int i = 1; i < chars.size(); i++) {
             string curr = input.subtring(i, i+1);
             char c = input.charAt(i);
 
-            if (prev == curr && curr == "-") {
+            if (prev.equals(curr) && curr.equals("-")) {
                 // check for consecutive hyphens
                 return false;
-            } else if (curr == "'") {
+            } else if (curr.equals("'")) {
                 // check for more than one quote
                 if (quoteCount > 0) return false;
                 else quoteCount++;
