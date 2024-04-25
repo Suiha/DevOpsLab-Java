@@ -19,7 +19,7 @@ public class NameChecker {
 
         int quoteCount = 0;
 
-        for (int i = 1; i < chars.size(); i++) {
+        for (int i = 1; i < input.length(); i++) {
             String curr = input.subtring(i, i+1);
             char c = input.charAt(i);
 
