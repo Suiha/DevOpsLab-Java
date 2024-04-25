@@ -25,7 +25,7 @@ public class NameChecker {
                 if (input.charAt(i) == '-') {
                     hiphen++;
                 }
-                if (input.charAt(i) == "\'") {
+                if (input.charAt(i) == '\'') {
                     single++;
                 }
                 if (single == 2) return false;
