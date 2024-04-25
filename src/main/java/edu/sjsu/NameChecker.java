@@ -13,14 +13,14 @@ public class NameChecker {
     public static boolean check(String input) {
         if (input.length() < 2 || input.length() > 40) return false;
 
-        string prev = input.substring(0, 1);
+        String prev = input.substring(0, 1);
 
         if (prev.equals("'") || prev.equals("\"")) return false;
 
         int quoteCount = 0;
 
         for (int i = 1; i < chars.size(); i++) {
-            string curr = input.subtring(i, i+1);
+            String curr = input.subtring(i, i+1);
             char c = input.charAt(i);
 
             if (prev.equals(curr) && curr.equals("-")) {
